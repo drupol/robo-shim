@@ -1,0 +1,34 @@
+{
+    "name": "drupol/robo-shim",
+    "description": "",
+    "type": "library",
+    "license": ["MIT"],
+    "authors": [],
+    "bin": [
+        "robo",
+        "robo.phar"
+    ],
+    "require": {
+        "php": ">= 7.4",
+        "ext-json": "*",
+        "consolidation/robo": "3.x-dev"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "humbug/box": "^3.12.0",
+        "jetbrains/phpstorm-stubs": "dev-master@dev"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "compile": [
+            "php -r \"copy('box.json.dist', 'vendor/consolidation/robo');\"",
+            "composer install --working-dir='vendor/consolidation/robo' --no-scripts --no-plugins --no-dev --no-interaction --optimize-autoloader",
+            "vendor/bin/box compile --working-dir='vendor/consolidation/robo'",
+            "php -r \"copy('vendor/consolidation/robo/robo.phar', 'robo.phar');\"",
+            "php -r \"file_put_contents('robo.phar.sha1sum', hash_file('sha1', 'robo.phar'));\""
+        ]
+    }
+}

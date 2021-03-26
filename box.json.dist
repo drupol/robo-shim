@@ -1,0 +1,19 @@
+{
+    "alias": "taskman.phar",
+    "banner": false,
+    "chmod": 777,
+    "force-autodiscovery": true,
+    "php-scoper": "box/scoper.inc.php",
+    "compactors": [
+        "KevinGH\\Box\\Compactor\\PhpScoper"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "directories": [
+        "src",
+        "vendor"
+    ],
+    "output": "taskman.phar",
+    "compression": "GZ"
+}
